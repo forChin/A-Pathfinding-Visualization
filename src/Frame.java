@@ -16,7 +16,7 @@ public class Frame extends JPanel
 	private int r, g, b;
 	private final int MAX = 255, MIN = 0; // Макс и мин значения для цветов
 	private Menu m;
-	private JFrame w;
+	private JFrame window;
 	private double a1, a2;
 	private boolean running, hover;
 	
@@ -27,29 +27,6 @@ public class Frame extends JPanel
 	}
 	
 	public Frame() {
-		setPreferredSize(new Dimension(700, 500));
-		setBackground(Color.WHITE);
-		setFocusable(true);
-		setLayout(null);
-		setFocusTraversalKeysEnabled(false);
-		
-		addKeyListener(this);
-		addMouseListener(this);
-		addMouseMotionListener(this);
-		addMouseWheelListener(this);
-				
-		w = new JFrame("A* Pathfinding Algorithm Visualization");
-		w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		w.setContentPane(this);
-		w.setMinimumSize(new Dimension(300, 300));
-		w.pack();
-		w.setLocationRelativeTo(null);
-		w.setVisible(true);
-		
-		m = new Menu(this);
-		m.addAll();
-		revalidate();
-		
 		// Значения переменных используются в экспоненциальной 
 		// функции в методе setSpeed()
 		a1 = (5000.0000 / (Math.pow(25.0000/5000, 1/49)));
@@ -63,6 +40,33 @@ public class Frame extends JPanel
 		b = (int) (Math.random() * ((MAX - MIN) + 1)) + MIN;
 
 		p = new Pathfinding(this, size);
+		
+		m = new Menu(this);
+		
+		setBackground(Color.WHITE);
+		setFocusable(true);
+		setLayout(null);
+		setFocusTraversalKeysEnabled(false);
+		
+		addKeyListener(this);
+		addMouseListener(this);
+		addMouseMotionListener(this);
+		addMouseWheelListener(this);
+				
+		window = new JFrame("A* Pathfinding Algorithm Visualization");
+		window.setContentPane(this);
+		window.setMinimumSize(new Dimension(300, 300));
+		window.getContentPane().setPreferredSize(new Dimension(700, 600));
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.pack();
+		window.setLocationRelativeTo(null);
+		window.setVisible(true);
+		
+		//добавляем меню
+		m.addAll();
+		
+		revalidate();
+		repaint();
 	}
 	
 	@Override
