@@ -26,7 +26,7 @@ public class Frame extends JPanel
 		});
 	}
 	
-	Frame() {
+	public Frame() {
 		setPreferredSize(new Dimension(700, 500));
 		setBackground(Color.WHITE);
 		setFocusable(true);
@@ -331,7 +331,7 @@ public class Frame extends JPanel
 
 	// Вычисляет скорость таймера, основываясь на 
 	// слайдере скорости
-	public void setSpeed() {
+	private void setSpeed() {
 		int value = m.getSlider().getValue();
 		int delay = 0;
 				

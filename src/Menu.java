@@ -21,7 +21,7 @@ public class Menu {
 	private ArrayList<JLabel> labels;
 	private ArrayList<JCheckBox> chBoxes;
 	
-	Menu(Frame f) {
+	public Menu(Frame f) {
 		this.f = f;
 		
 		labels = new ArrayList<>();
